@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class GameControlComponent {
 
+  onStartGame() {
+    console.log('start!');
+  }
+
+  onClear() {
+    console.log('stop!');
+  }
 }
