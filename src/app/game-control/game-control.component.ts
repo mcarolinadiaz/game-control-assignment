@@ -8,16 +8,18 @@ import { Component } from '@angular/core';
 export class GameControlComponent {
   number: number = 0;
   intervalId: any;
+  starting: boolean = false;
 
   onStartGame() {
     console.log('start!');
-
+    this.starting = true;
     this.intervalId = setInterval( () => {this.number += 1}, 3600);
   }
 
   onClear() {
     console.log('stop!');
     this.number = 0;
+    this.starting = false;
     clearInterval(this.intervalId);
   }
 }
