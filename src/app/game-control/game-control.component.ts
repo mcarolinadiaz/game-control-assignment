@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-game-control',
@@ -9,16 +9,17 @@ export class GameControlComponent {
   number: number = 0;
   intervalId: any;
   starting: boolean = false;
+  @Output('gameStarted') gameStarted = new EventEmitter<number>();
+  @Output('gameStopped') gameStopped = new EventEmitter<number>();
 
   onStartGame() {
-    console.log('start!');
     this.starting = true;
-    this.intervalId = setInterval( () => {this.number += 1}, 3600);
+    this.intervalId = setInterval( () => {this.number += 1; this.gameStarted.emit(this.number);}, 3600);
   }
 
   onClear() {
-    console.log('stop!');
     this.number = 0;
+    this.gameStopped.emit(this.number);
     this.starting = false;
     clearInterval(this.intervalId);
   }

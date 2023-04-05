@@ -14,7 +14,8 @@
       </ol>
     </div>
     <div>
-      <app-game-control></app-game-control>
+      <app-game-control (gameStarted)="onStartedGame($event)" (gameStopped)="onStoppedGame($event)" ></app-game-control>
+      {{ increasingNumber ? increasingNumber : 0 }}
     </div>
   </div>
 </div>
