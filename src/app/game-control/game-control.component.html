@@ -1,2 +1,14 @@
-<button [disabled]="starting" (click)="onStartGame()">START</button>
-<button [disabled]="!starting" (click)="onClear()">STOP</button>
+<div>
+  <div>
+    <button [disabled]="starting" (click)="onStartGame()">START</button>
+    <button [disabled]="!starting" (click)="onClear()">STOP</button>
+  </div>
+  <!--div *ngFor="!starting"-->
+    <div *ngIf="isEven(); else isOdd">
+      <app-even></app-even>
+    </div>
+    <ng-template #isOdd>
+      <app-odd></app-odd>
+    </ng-template>
+  <!--/div-->
+</div>

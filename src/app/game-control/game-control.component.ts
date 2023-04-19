@@ -6,7 +6,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./game-control.component.css']
 })
 export class GameControlComponent {
-  number: number = 0;
+  number: number = null;
   intervalId: any;
   starting: boolean = false;
   @Output('gameStarted') gameStarted = new EventEmitter<number>();
@@ -18,9 +18,13 @@ export class GameControlComponent {
   }
 
   onClear() {
-    this.number = 0;
+    this.number = null;
     this.gameStopped.emit(this.number);
     this.starting = false;
     clearInterval(this.intervalId);
+  }
+
+  isEven() {
+    return this.number % 2 === 0;
   }
 }
